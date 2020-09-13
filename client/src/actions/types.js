@@ -1,0 +1,11 @@
+export const SET_ALERT = "SET_ALERT";
+export const REMOVE_ALERT = "REMOVE_ALERT";
+export const GET_POSTS = "GET_POSTS";
+export const ADD_POST = "ADD_POST";
+export const POST_ERROR = "POST_ERROR";
+export const CLEAR_POST = "CLEAR_POST";
+export const ADD_LIKE = "ADD_LIKE";
+export const ADD_DISLIKE = "ADD_DISLIKE";
+export const ADD_HEART = "ADD_HEART";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const ADD_LIKE_TO_COMMENT = "ADD_HEART";

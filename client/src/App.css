@@ -1,0 +1,24 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+}
+.router-link {
+  color: white;
+}
+
+.main-container {
+  background-color: #282c36;
+  min-height: 100vh;
+}
+.comments-box {
+  margin: 0.5rem auto;
+}
+.comment {
+  background-color: #282c36;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+  margin: 0.5rem auto;
+}
