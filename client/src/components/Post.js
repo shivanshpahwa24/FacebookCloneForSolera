@@ -4,7 +4,12 @@ import Dislike from "../assets/icons/dislike.png";
 import Heart from "../assets/icons/heart.png";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { addLike, addDislike, addHeart } from "../actions/post";
+import {
+  addLike,
+  addDislike,
+  addHeart,
+  addLikeToComment,
+} from "../actions/post";
 import AddComment from "./AddComment";
 
 const Post = ({
@@ -12,6 +17,7 @@ const Post = ({
   addLike,
   addDislike,
   addHeart,
+  addLikeToComment,
 }) => {
   return (
     <div className="card bg-dark text-white my-4">
@@ -53,8 +59,23 @@ const Post = ({
         <div className="comments-box">
           {comments !== null &&
             comments.map((comment) => (
-              <div className="comment" key={comment._id}>
-                <span style={{ fontSize: "0.9rem" }}>{comment.text}</span>
+              <div
+                className="comment d-flex justify-content-between"
+                key={comment._id}
+              >
+                <div style={{ fontSize: "0.9rem" }}>{comment.text}</div>
+                <div style={{ fontSize: "0.9rem" }}>
+                  {comment.likes}{" "}
+                  <button
+                    type="button"
+                    className="btn p-0"
+                    onClick={() => {
+                      addLikeToComment(_id, comment._id);
+                    }}
+                  >
+                    <img src={Like} height={20} width={20} />
+                  </button>
+                </div>
               </div>
             ))}
         </div>
@@ -68,6 +89,12 @@ Post.propTypes = {
   addLike: PropTypes.func.isRequired,
   addDislike: PropTypes.func.isRequired,
   addHeart: PropTypes.func.isRequired,
+  addLikeToComment: PropTypes.func.isRequired,
 };
 
-export default connect(null, { addLike, addDislike, addHeart })(Post);
+export default connect(null, {
+  addLike,
+  addDislike,
+  addHeart,
+  addLikeToComment,
+})(Post);

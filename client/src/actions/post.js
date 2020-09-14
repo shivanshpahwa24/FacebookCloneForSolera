@@ -9,6 +9,7 @@ import {
   ADD_LIKE,
   ADD_HEART,
   ADD_COMMENT,
+  ADD_LIKE_TO_COMMENT,
 } from "./types";
 
 export const getAllPosts = () => async (dispatch) => {
@@ -136,6 +137,24 @@ export const addComment = (formData, postId) => async (dispatch) => {
       errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
+    dispatch({
+      type: POST_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status },
+    });
+  }
+};
+
+//Add like to comment
+export const addLikeToComment = (postId, commentId) => async (dispatch) => {
+  try {
+    const res = await axios.put(
+      `/api/posts/comment/like/${postId}/${commentId}`
+    );
+    dispatch({
+      type: ADD_LIKE_TO_COMMENT,
+      payload: res.data,
+    });
+  } catch (err) {
     dispatch({
       type: POST_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },

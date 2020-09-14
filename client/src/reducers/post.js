@@ -7,6 +7,7 @@ import {
   ADD_LIKE,
   ADD_HEART,
   ADD_COMMENT,
+  ADD_LIKE_TO_COMMENT,
 } from "../actions/types";
 
 const initialState = {
@@ -54,6 +55,11 @@ export default function (state = initialState, action) {
         post: { ...state.post, hearts: payload },
       };
     case ADD_COMMENT:
+      return {
+        ...state,
+        post: { ...state.post, comments: payload },
+      };
+    case ADD_LIKE_TO_COMMENT:
       return {
         ...state,
         post: { ...state.post, comments: payload },
